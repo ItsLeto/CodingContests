@@ -32,11 +32,11 @@
 
 # Executables
 *.exe
-*.out
 *.app
 
 ### VisualStudioCode ###
 .vscode/*
+!.vscode/tasks.json
 
 # Local History for Visual Studio Code
 .history/

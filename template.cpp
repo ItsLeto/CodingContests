@@ -1,12 +1,6 @@
 #include "bits/stdc++.h"
 #define LOCAL
 using namespace std;
-#define sim template <class c
-#define ris return *this
-#define dor > debug &operator<<
-#define eni(x)       \
-  template <class c> \
-  typename enable_if<sizeof dud<c>(0) x 1, debug &>::type operator<<(c i) {
 template <class c>
 struct rge {
   c b, e;
@@ -33,7 +27,6 @@ struct debug {
   typename enable_if<sizeof dud<c>(0) == 1, debug &>::type operator<<(c i) {
     return *this << range(begin(i), end(i));
   }
-
   template <class c, class b>
   debug &operator<<(pair<b, c> d) {
     return *this << "(" << d.first << ", " << d.second << ")";
@@ -42,6 +35,12 @@ struct debug {
   debug &operator<<(rge<c> d) {
     *this << "[";
     for (auto it = d.b; it != d.e; ++it) *this << ", " + 2 * (it == d.b) << *it;
+    return *this << "]";
+  }
+  template <template <class...> class c, class... Args>
+  debug &operator<<(vector<c<Args...>> v) {
+    *this << "[\n";
+    for (auto e : v) *this << "   " << range(begin(e), end(e)) << "\n";
     return *this << "]";
   }
 #else
@@ -77,11 +76,13 @@ using ull = unsigned long long;
 using ui = unsigned int;
 using pii = pair<int, int>;
 using pl = pair<ll, ll>;
+using vc = vector<char>;
 using vi = vector<int>;
 using vl = vector<ll>;
 using vpii = vector<pii>;
 using vpl = vector<pl>;
 using vvi = vector<vi>;
+using vvc = vector<vc>;
 using vvl = vector<vl>;
 
 /******************************************************************************/
